@@ -9,20 +9,20 @@
 import XCTest
 @testable import NewsMeUp
 
-enum NewsNetworkMangerTestsType {
+enum TestNewsNetworkMangerType {
     case successResponse
     case errorResponse
 }
 
-class NewsNetworkMangerTests : NewsNetworkManagerProtocol {
+class TestNewsNetworkManger : NewsNetworkManagerProtocol {
     
-    var newsNetworkMangerTestsType : NewsNetworkMangerTestsType = NewsNetworkMangerTestsType.errorResponse
+    var testNewsNetworkMangerType : TestNewsNetworkMangerType = TestNewsNetworkMangerType.errorResponse
     
     func fetchTopNews(_ completion : @escaping (Result<NewsList, NetworkError>) -> Void) -> Void {
         
         var urlStr : URL?
         
-        if newsNetworkMangerTestsType == .successResponse {
+        if testNewsNetworkMangerType == .successResponse {
             urlStr = Bundle.main.url(forResource: "TopNews", withExtension: "json")!
         }
         else {

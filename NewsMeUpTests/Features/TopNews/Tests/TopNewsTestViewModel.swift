@@ -55,7 +55,8 @@ class TopNewsViewModelTests: XCTestCase {
             case .success(_):
                 XCTFail("expected No response")
                 expectation.fulfill()
-            case .failure(_):
+            case .failure(let error):
+                XCTAssertNotNil(error) // error is not nil, true. if it is nill then error
                 newsArray = []
                 expectation.fulfill()
             }

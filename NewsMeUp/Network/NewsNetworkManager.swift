@@ -16,8 +16,7 @@ protocol NewsNetworkManagerProtocol {
 class NewsNetworkManager {
         
     func fetchTopNews(_ completion : @escaping (Result<NewsList, NetworkError>) -> Void) -> Void {
-        let urlStr =  "https://newsapi.org/v2/top-headlines?q=top&from=2020-07-07&sortBy=publishedAt&apiKey=a28b5e512c104bf68fba3eb289522447&pageSize=10"
+        let urlStr =  APICLient.getTopNewsApi()
         return HttpClient.sharedInstance.getResponse(fromURL: urlStr, completion)
     }
-    
 }

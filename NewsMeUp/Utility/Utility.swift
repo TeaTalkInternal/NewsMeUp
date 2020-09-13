@@ -9,3 +9,13 @@
 import Foundation
 
 typealias CompletionHandler = (()->Void)
+
+struct Utility {
+    
+    static func getDateString() -> String {
+        let dateFormatter = DateFormatter.init()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter.string(from: Date())
+    }
+}
+
