@@ -23,6 +23,8 @@ class TopNewsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.title = "Top News"
+        newsTableView.isAccessibilityElement = true
+        newsTableView.accessibilityIdentifier = "NewsTableView"
         newsListViewModel.fetchAllNews()
     }
     
@@ -47,6 +49,8 @@ extension TopNewsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : NewsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+        cell.isAccessibilityElement = true
+        cell.accessibilityIdentifier = "NewsTableViewCell_\(indexPath.section)_\(indexPath.row)"
         let newsArticle = newsListViewModel.newsArticleAtIndex(index: indexPath.row)
         cell.titleLabel.text = newsArticle?.newsTitle
         cell.descriptionLabel.text = newsArticle?.newsTitle

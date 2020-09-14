@@ -19,16 +19,24 @@ class NewsListViewModel {
     
     var completionHandler : CompletionHandler?
     
+    init() {
+    }
+    
     init(completionHandler : @escaping CompletionHandler) {
         self.completionHandler = completionHandler
         self.newsNetworkManager = NewsNetworkManager()
     }
+    
     
     var numberOfNewsArticles : Int {
         guard let newsCount = newsArray?.count else {
             return 0
         }
         return newsCount
+    }
+    
+    func setNewsArray(newsArray : [News]?) {
+        self.newsArray = newsArray
     }
     
     func newsArticleAtIndex(index : Int) -> NewsViewModel? {
@@ -39,9 +47,11 @@ class NewsListViewModel {
         newsNetworkManager?.fetchTopNews { (result) in
             switch result {
             case .success(let newsList):
-                self.newsArray = newsList.news
+                //self.newsArray = newsList.news
+                self.setNewsArray(newsArray: newsList.news)
             case .failure(_):
-                self.newsArray = []
+                //self.newsArray = []
+                self.setNewsArray(newsArray: [])
             }
         }
     }
