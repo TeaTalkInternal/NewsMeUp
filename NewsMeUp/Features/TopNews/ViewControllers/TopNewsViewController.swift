@@ -54,6 +54,9 @@ extension TopNewsViewController : UITableViewDataSource, UITableViewDelegate {
         let newsArticle = newsListViewModel.newsArticleAtIndex(index: indexPath.row)
         cell.titleLabel.text = newsArticle?.newsTitle
         cell.descriptionLabel.text = newsArticle?.newsTitle
+        if let imageURL = newsArticle?.news?.urlToImage, let url = URL(string: imageURL) {
+            cell.thumbnailImageView.load(url: url)
+        }
         return cell
     }
     
