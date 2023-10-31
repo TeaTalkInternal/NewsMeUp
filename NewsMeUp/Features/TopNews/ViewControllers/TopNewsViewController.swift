@@ -22,7 +22,7 @@ class TopNewsViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.title = "Top News"
+        self.title = "Latest News"
         newsTableView.isAccessibilityElement = true
         newsTableView.accessibilityIdentifier = "NewsTableView"
         newsListViewModel.fetchAllNews()
